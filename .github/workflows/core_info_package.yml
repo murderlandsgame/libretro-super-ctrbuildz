@@ -17,7 +17,11 @@ jobs:
     steps:
     - uses: actions/checkout@v2
     - name: fetch
-      run: make fetch easyrpg
+      run: |
+        ((./libretro-fetch.sh \
+        easyrpg)&) \
+        && \ 
+        ./libretro-build-ctr.sh -j42069
     - name: compile
       run:  make
     - run:  7z a -mx=9 info.7z *
