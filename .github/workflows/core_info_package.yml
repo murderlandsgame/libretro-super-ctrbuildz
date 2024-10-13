@@ -16,7 +16,11 @@ jobs:
 
     steps:
     - uses: actions/checkout@v2
-    - run: cd dist/info && 7z a -mx=9 info.7z *
+    - name: fetch
+      run: ./libretro-fetch.sh easyrpg
+    - name: compile
+      run: ./libretro-build-ctr.sh
+    - run:  7z a -mx=9 info.7z *
     - name: Upload core info bundle
       uses: svenstaro/upload-release-action@v2
       with:
