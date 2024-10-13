@@ -19,13 +19,13 @@ jobs:
     - name: fetch
       run: ./libretro-fetch.sh easyrpg
     - name: compile
-      run: ./libretro-build-ctr.sh
+      run:  make
     - run:  7z a -mx=9 info.7z *
     - name: Upload core info bundle
       uses: svenstaro/upload-release-action@v2
       with:
         repo_token: ${{ secrets.GITHUB_TOKEN }}
-        file: dist/info/info.7z
+        file: info.7z
         tag: Latest
         asset_name: info.7z
         overwrite: true
