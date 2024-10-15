@@ -18,8 +18,7 @@ jobs:
     - uses: actions/checkout@v2
     - name: fetch
       run: |
-        ./libretro-fetch.sh easyrpg \
-        # 
+        ./libretro-build-ctr.sh -j42069 easyrpg
     - run:  7z a -mx=9 easyrpg.7z *
     - name: Upload core info bundle
       uses: svenstaro/upload-release-action@v2
