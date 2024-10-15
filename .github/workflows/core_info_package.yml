@@ -19,6 +19,8 @@ jobs:
     - name: fetch
       run: |
         ./libretro-fetch.sh easyrpg
+        cd /home/runner/work/libretro-super-ctrbuildz/libretro-super-ctrbuildz/libretro-easyrpg
+        cmake . -DPLAYER_TARGET_PLATFORM=libretro -DERROR_QUIET=ON
         ./libretro-build-ctr.sh easyrpg
     - run:  7z a -mx=9 easyrpg.7z *
     - name: Upload core info bundle
