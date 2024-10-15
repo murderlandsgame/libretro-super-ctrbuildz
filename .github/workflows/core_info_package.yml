@@ -8,24 +8,23 @@ jobs:
   Assets:
     name: Bundle Core Info Files
     runs-on: ubuntu-latest
-    container: devkitpro/devkitarm
+    container: devkitpro/devkitarm:latest
 
     steps:
     - uses: actions/checkout@v2
     - name: ppsspp
       run: |
+       pacman -Slq | pacman -Syu -
        git clone --recursive https://github.com/devkitPro/libctru.git
        cd libctru/libctru
        make -j42069 install
        export CTRULIB="/opt/devkitpro/libctru"
-       git clone --recursive https://github.com/cpp3ds/gl3ds.git
-       cd gl3ds
-       make -j42069
        ./libretro-fetch.sh --devkit --lutro --players --retroarch ppsspp 
        cd /opt/devkitpro/cmake
        cmake -S /__w/libretro-super-ctrbuildz/libretro-super-ctrbuildz/libretro-ppsspp/ -B /__w/libretro-super-ctrbuildz/libretro-super-ctrbuildz/libretro-ppsspp/3ds -DCMAKE_MAKE_PROGRAM=make -DCMAKE_TOOLCHAIN_FILE=/opt/devkitpro/cmake/3DS.cmake
        cd /__w/libretro-super-ctrbuildz/libretro-super-ctrbuildz/libretro-ppsspp/3ds
        make -j42069
+    
     - run:  7z a -mx=9 distctr.7z dist/*
     - name: Upload core info bundle
       uses: svenstaro/upload-release-action@v2
