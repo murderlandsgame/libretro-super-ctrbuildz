@@ -2,13 +2,7 @@
 name: libretro Core Info Package
 
 on:
-  # Trigger the workflow on push, but only for the master branch
-  push:
-    branches:
-      - master
-  watch: # this is a hack that lets repo owners trigger a build by starring
-    types: [started]
-    if: github.actor == github.event.repository.owner.login
+  workflow_dispatch:
 
 jobs:
   Assets:
