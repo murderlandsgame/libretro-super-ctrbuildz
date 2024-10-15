@@ -265,7 +265,7 @@ build_cmake() {
 			echo_cmd "$make_cmdline --build build --target clean"
 		fi
 		make_cmdline1="$make_cmdline  $core_build_args . -Bbuild"
-		make_cmdline2="$make_cmdline --build build/ --target $core_cmake_target --config Release -- "
+		make_cmdline2="$make_cmdline --build build/ $core_cmake_target --config Release -- "
   	[ -n "$JOBS" ] && make_cmdline2="$make_cmdline2 -j$JOBS"
   	[ -n "$DEBUG" ] && make_cmdline2="$make_cmdline2 DEBUG=$DEBUG"
 
