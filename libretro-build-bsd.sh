@@ -30,7 +30,7 @@ CXX11="clang++ -std=c++11 -stdlib=libc++"
 # CXX17=g++10
 CXX17="clang++ -std=c++17 -stdlib=libc++"
 STRIP=strip
-MAKE=gmake
+MAKE=cmake
 
 . "$BASE_DIR/libretro-build-common.sh"
 
