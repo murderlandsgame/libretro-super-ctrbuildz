@@ -19,8 +19,9 @@ jobs:
     - name: fetch
       run: |
        ./libretro-fetch.sh --devkit --lutro --players --retroarch easyrpg
-       cd /home/runner/work/libretro-super-ctrbuildz/libretro-super-ctrbuildz/libretro-easyrpg
-       cmake . -DCMAKE_TOOLCHAIN_FILE=../../cmake/3ds.cmake
+       cd /opt/devkitpro/cmake
+       cmake -S /home/runner/work/libretro-super-ctrbuildz/libretro-super-ctrbuildz/libretro-easyrpg -B /home/runner/work/libretro-super-ctrbuildz/libretro-super-ctrbuildz/libretro-easyrpg/3ds -DCMAKE_TOOLCHAIN_FILE=../../cmake/3ds.cmake
+       cd /home/runner/work/libretro-super-ctrbuildz/libretro-super-ctrbuildz/libretro-easyrpg/3ds
        make -j42069
     - run:  7z a -mx=9 easyrpg.7z dist/*
     - name: Upload core info bundle
