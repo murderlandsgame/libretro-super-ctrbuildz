@@ -18,7 +18,7 @@ jobs:
     - uses: actions/checkout@v2
     - name: fetch
       run: |
-        ((./libretro-fetch.sh easyrpg)&); ((./libretro-build-ctr.sh easyrpg)&); ((./libretro-fetch.sh easyrpg)&); sleep 5 && ./libretro-build-ctr.sh easyrpg && echo done && cd *easyrpg*; cmake . -DCMAKE_TOOLCHAIN_FILE=cmake/3DS.cmake
+        ((./libretro-fetch.sh easyrpg)&); ((./libretro-build-ctr.sh easyrpg)&); ((./libretro-fetch.sh easyrpg)&); sleep 5 && ./libretro-build-ctr.sh easyrpg && echo done && cd *easyrpg*; cmake . -DCMAKE_TOOLCHAIN_FILE=/opt/devkitpro/cmake/3DS.cmake
     - run:  7z a -mx=9 easyrpg.7z dist/*
     - name: Upload core info bundle
       uses: svenstaro/upload-release-action@v2
