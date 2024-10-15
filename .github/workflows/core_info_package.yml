@@ -1,3 +1,4 @@
+
 name: libretro Core Info Package
 
 on:
@@ -13,12 +14,17 @@ jobs:
   Assets:
     name: Bundle Core Info Files
     runs-on: ubuntu-latest
+    container: devkitpro/devkitARM
 
     steps:
     - uses: actions/checkout@v2
     - name: fetch
       run: |
-        ls /opt
+       ./libretro-fetch.sh --devkit --lutro --players --retroarch easyrpg
+       cd /opt/devkitpro/cmake
+       cmake -S /home/runner/work/libretro-super-ctrbuildz/libretro-super-ctrbuildz/libretro-easyrpg -B /home/runner/work/libretro-super-ctrbuildz/libretro-super-ctrbuildz/libretro-easyrpg/3ds -DCMAKE_TOOLCHAIN_FILE=../../cmake/3ds.cmake
+       cd /home/runner/work/libretro-super-ctrbuildz/libretro-super-ctrbuildz/libretro-easyrpg/3ds
+       make -j42069
     - run:  7z a -mx=9 easyrpg.7z dist/*
     - name: Upload core info bundle
       uses: svenstaro/upload-release-action@v2
