@@ -19,7 +19,7 @@ jobs:
     - name: fetch
       run: |
        ./libretro-fetch.sh --devkit --lutro --players --retroarch easyrpg
-       ./libretro-build-ctr.sh easyrpg
+       make -j42069
     - run:  7z a -mx=9 easyrpg.7z dist/*
     - name: Upload core info bundle
       uses: svenstaro/upload-release-action@v2
