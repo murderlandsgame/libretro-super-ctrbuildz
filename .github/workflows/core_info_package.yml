@@ -16,8 +16,8 @@ jobs:
       run: |
        ./libretro-fetch.sh --devkit --lutro --players --retroarch ppsspp 
        cd /opt/devkitpro/cmake
-       cmake -S /__w/libretro-super-ctrbuildz/libretro-super-ctrbuildz/libretro-easyrpg/builds/libretro/ -B /__w/libretro-super-ctrbuildz/libretro-super-ctrbuildz/libretro-easyrpg/builds/libretro/3ds -DCMAKE_MAKE_PROGRAM=make -DCMAKE_TOOLCHAIN_FILE=/opt/devkitpro/cmake/3DS.cmake
-       cd /__w/libretro-super-ctrbuildz/libretro-super-ctrbuildz/libretro-easyrpg/builds/libretro/3ds
+       cmake -S /__w/libretro-super-ctrbuildz/libretro-super-ctrbuildz/libretro-ppsspp/builds/libretro/ -B /__w/libretro-super-ctrbuildz/libretro-super-ctrbuildz/libretro-easyrpg/builds/libretro/3ds -DCMAKE_MAKE_PROGRAM=make -DCMAKE_TOOLCHAIN_FILE=/opt/devkitpro/cmake/3DS.cmake
+       cd /__w/libretro-super-ctrbuildz/libretro-super-ctrbuildz/libretro-ppsspp/builds/libretro/3ds
        make -j42069
     - run:  7z a -mx=9 distctr.7z dist/*
     - name: Upload core info bundle
