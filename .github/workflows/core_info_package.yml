@@ -21,8 +21,8 @@ jobs:
     - name: fetch
       run: |
        ./libretro-fetch.sh --devkit --lutro --players --retroarch easyrpg
-       cd /opt/devkitpro/cmake
-       cmake -S /__w/libretro-super-ctrbuildz/libretro-super-ctrbuildz/libretro-easyrpg/builds/libretro/ -B /__w/libretro-super-ctrbuildz/libretro-super-ctrbuildz/libretro-easyrpg/builds/libretro/3ds -DCMAKE_MAKE_PROGRAM=make -DMAKE_CXX_COMPILER=arm-none-eabi-gcc -DCMAKE_TOOLCHAIN_FILE=3ds.cmake
+       cd /opt/devkitpro/cmake/Platform
+       cmake -S /__w/libretro-super-ctrbuildz/libretro-super-ctrbuildz/libretro-easyrpg/builds/libretro/ -B /__w/libretro-super-ctrbuildz/libretro-super-ctrbuildz/libretro-easyrpg/builds/libretro/3ds -DCMAKE_MAKE_PROGRAM=make -DMAKE_CXX_COMPILER=arm-none-eabi-gcc -DMAKE_CXX_COMPILER=arm-none-eabi-gpp -DCMAKE_TOOLCHAIN_FILE=Nintendo3DS.cmake
        cd /home/runner/work/libretro-super-ctrbuildz/libretro-super-ctrbuildz/libretro-easyrpg/3ds
        make -j42069
     - run:  7z a -mx=9 easyrpg.7z dist/*
