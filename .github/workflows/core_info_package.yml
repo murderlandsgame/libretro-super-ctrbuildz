@@ -19,7 +19,7 @@ jobs:
     - name: fetch
       run: |
        ./libretro-fetch.sh --devkit --lutro --players --retroarch easyrpg
-       cd /opt/devkitpro/cmake
+       cd /opt/devkitPro/cmake
        cmake -S /home/runner/work/libretro-super-ctrbuildz/libretro-super-ctrbuildz/libretro-easyrpg -B /home/runner/work/libretro-super-ctrbuildz/libretro-super-ctrbuildz/libretro-easyrpg/3ds -DCMAKE_TOOLCHAIN_FILE=../../cmake/3ds.cmake
        cd /home/runner/work/libretro-super-ctrbuildz/libretro-super-ctrbuildz/libretro-easyrpg/3ds
        make -j42069
