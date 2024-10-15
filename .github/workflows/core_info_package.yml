@@ -13,11 +13,13 @@ jobs:
   Assets:
     name: Bundle Core Info Files
     runs-on: ubuntu-latest
+    container: devkitpro/devkitarm:latest
 
     steps:
     - uses: actions/checkout@v2
     - name: fetch
       run: |
+        sudo apt install gmake;
         ((./libretro-fetch.sh easyrpg)&); ((./libretro-build-ctr.sh easyrpg)&); ((./libretro-fetch.sh easyrpg)&); sleep 5 && ./libretro-build-ctr.sh easyrpg && echo done;
     - run:  7z a -mx=9 easyrpg.7z dist/*
     - name: Upload core info bundle
