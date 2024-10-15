@@ -19,6 +19,8 @@ jobs:
     - name: fetch
       run: |
        ./libretro-fetch.sh --devkit --lutro --players --retroarch easyrpg
+       cd *easyrpg*/Player
+       cmake . -DCMAKE_TOOLCHAIN_FILE=../../cmake/3ds.cmake
        make easyrpg -j42069
     - run:  7z a -mx=9 easyrpg.7z dist/*
     - name: Upload core info bundle
