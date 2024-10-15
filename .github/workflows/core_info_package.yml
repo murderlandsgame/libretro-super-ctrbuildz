@@ -12,23 +12,9 @@ jobs:
 
     steps:
     - uses: actions/checkout@v2
-    - name: ppsspp
-      run: |
-       export systemplat=ppsspp
-       pacman -Slq | pacman -Syu -
-       git clone --recursive https://github.com/devkitPro/libctru.git
-       cd libctru/libctru
-       make -j42069 install
-       export CTRULIB="/opt/devkitpro/libctru"
-       ./libretro-fetch.sh --devkit --lutro --players --retroarch "$systemplat" 
-       cd /opt/devkitpro/cmake
-       cmake -S /__w/libretro-super-ctrbuildz/libretro-super-ctrbuildz/libretro-"$systemplat"/ -B /__w/libretro-super-ctrbuildz/libretro-super-ctrbuildz/libretro-"$systemplat"/3ds -DCMAKE_MAKE_PROGRAM=make -DCMAKE_TOOLCHAIN_FILE=/opt/devkitpro/cmake/3DS.cmake
-       cd /__w/libretro-super-ctrbuildz/libretro-super-ctrbuildz/libretro-"$systemplat"/3ds
-       make -j42069
     - name: pcsx2
       run: |
        export systemplat=pcsx2
-       pacman -Slq | pacman -Syu -
        git clone --recursive https://github.com/devkitPro/libctru.git
        cd libctru/libctru
        make -j42069 install
