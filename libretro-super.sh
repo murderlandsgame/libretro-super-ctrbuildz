@@ -537,7 +537,7 @@ if [ -z "$MAKE" ]; then
 		MAKE=mingw32-make
 	else
 		if type gmake > /dev/null 2>&1; then
-			MAKE=gmake
+			MAKE=cmake
 		else
 			MAKE=make
 		fi
