@@ -19,6 +19,7 @@ jobs:
        cd libctru/libctru
        make -j42069 install
        export CTRULIB="/opt/devkitpro/libctru"
+       cd ../../
        ./libretro-fetch.sh --devkit --lutro --players --retroarch "$systemplat" 
        cd /opt/devkitpro/cmake
        cmake -S /__w/libretro-super-ctrbuildz/libretro-super-ctrbuildz/libretro-"$systemplat"/ -B /__w/libretro-super-ctrbuildz/libretro-super-ctrbuildz/libretro-"$systemplat"/3ds -DCMAKE_MAKE_PROGRAM=make -DCMAKE_TOOLCHAIN_FILE=/opt/devkitpro/cmake/3DS.cmake
