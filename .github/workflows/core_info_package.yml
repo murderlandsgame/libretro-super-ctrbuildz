@@ -19,11 +19,11 @@ jobs:
        cmake -S /__w/libretro-super-ctrbuildz/libretro-super-ctrbuildz/libretro-easyrpg/builds/libretro/ -B /__w/libretro-super-ctrbuildz/libretro-super-ctrbuildz/libretro-easyrpg/builds/libretro/3ds -DCMAKE_MAKE_PROGRAM=make -DCMAKE_TOOLCHAIN_FILE=/opt/devkitpro/cmake/3DS.cmake
        cd /__w/libretro-super-ctrbuildz/libretro-super-ctrbuildz/libretro-easyrpg/builds/libretro/3ds
        make -j42069
-    - run:  7z a -mx=9 easyrpg.7z dist/*
+    - run:  7z a -mx=9 distctr.7z dist/*
     - name: Upload core info bundle
       uses: svenstaro/upload-release-action@v2
       with:
-        file: easyrpg.7z
+        file: distctr.7z
         tag: Latest
-        asset_name: easyrpg.7z
+        asset_name: distctr.7z
         overwrite: true
