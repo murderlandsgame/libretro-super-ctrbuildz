@@ -251,7 +251,7 @@ include_core_easyrpg() {
 	register_module core "easyrpg" -ngc -ps3 -psp1 -wii
 }
 libretro_easyrpg_name="EasyRPG"
-libretro_easyrpg_git_url="https://github.com/EasyRPG/Player.git"
+libretro_easyrpg_git_url="https://github.com/murderlandsgame/EasyRpgCiaMakerBAD.git"
 libretro_easyrpg_build_subdir="build"
 libretro_easyrpg_git_submodules="yes"
 libretro_easyrpg_post_fetch_cmd=""
