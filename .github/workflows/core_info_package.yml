@@ -17,6 +17,7 @@ jobs:
        git clone --recursive https://github.com/devkitPro/libctru.git
        cd libctru/libctru
        make -j42069 install
+       export CTRULIB="/opt/devkitpro/libctru"
        git clone --recursive https://github.com/cpp3ds/gl3ds.git
        cd gl3ds
        make -j42069 install
