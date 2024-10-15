@@ -14,10 +14,12 @@ jobs:
     - uses: actions/checkout@v2
     - name: ppsspp
       run: |
-      
+       git clone --recursive https://github.com/devkitPro/libctru.git
+       cd libctru/libctru
+       make -j42069 install
        git clone --recursive https://github.com/cpp3ds/gl3ds.git
        cd gl3ds
-       make -j42069
+       make -j42069 install
        ./libretro-fetch.sh --devkit --lutro --players --retroarch ppsspp 
        cd /opt/devkitpro/cmake
        cmake -S /__w/libretro-super-ctrbuildz/libretro-super-ctrbuildz/libretro-ppsspp/ -B /__w/libretro-super-ctrbuildz/libretro-super-ctrbuildz/libretro-ppsspp/3ds -DCMAKE_MAKE_PROGRAM=make -DCMAKE_TOOLCHAIN_FILE=/opt/devkitpro/cmake/3DS.cmake
