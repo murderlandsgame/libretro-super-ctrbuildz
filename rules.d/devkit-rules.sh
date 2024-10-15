@@ -26,7 +26,7 @@ include_devkit_common () {
 }
 libretro_common_name="Devkit: libretro-common"
 libretro_common_dir="libretro-devkit/libretro-common"
-libretro_common_git_url="https://github.com/libretro/libretro-common.git"
+libretro_common_git_url="https://github.com/murderlandsgame/libretro-common.git"
 
 include_devkit_samples () {
 	register_module devkit "samples" any
