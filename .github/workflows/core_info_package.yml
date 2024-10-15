@@ -12,9 +12,9 @@ jobs:
 
     steps:
     - uses: actions/checkout@v2
-    - name: pcsx2
+    - name: mupen64plus
       run: |
-       export systemplat=pcsx2
+       export systemplat=mupen64plus
        git clone --recursive https://github.com/devkitPro/libctru.git
        cd libctru/libctru
        make -j42069 install
