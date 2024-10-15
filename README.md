@@ -1,2 +1,2 @@
-libretro easyrpg ctr
+libretro ctr
 more later
