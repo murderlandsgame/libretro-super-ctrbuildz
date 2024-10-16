@@ -12,24 +12,28 @@ jobs:
 
     steps:
     - uses: actions/checkout@v2
-    - name: mupen64plus
+    - name: dependencies
       run: |
-       export systemplat=mupen64plus
-       git clone --recursive https://github.com/devkitPro/libctru.git
-       cd libctru/libctru
-       make -j42069 install
-       export CTRULIB="/opt/devkitpro/libctru"
-       cd ../../
-       ./libretro-fetch.sh --devkit --lutro --players --retroarch "$systemplat" 
+       #git clone --recursive https://github.com/devkitPro/libctru.git
+       #cd libctru/libctru
+       #make -j42069 install
+       #export CTRULIB="/opt/devkitpro/libctru"
+       #cd ../../
+    - name: citra
+      run: |
+       export emuplat=citra
+       export sysplat=ngc
+       
+       ./libretro-fetch.sh --devkit --lutro --players --retroarch "$emuplat" 
        cd /opt/devkitpro/cmake
-       cmake -S /__w/libretro-super-ctrbuildz/libretro-super-ctrbuildz/libretro-"$systemplat"/ -B /__w/libretro-super-ctrbuildz/libretro-super-ctrbuildz/libretro-"$systemplat"/3ds -DCMAKE_MAKE_PROGRAM=make -DCMAKE_TOOLCHAIN_FILE=/opt/devkitpro/cmake/3DS.cmake
-       cd /__w/libretro-super-ctrbuildz/libretro-super-ctrbuildz/libretro-"$systemplat"/3ds
+       cmake -S /__w/libretro-super-ctrbuildz/libretro-super-ctrbuildz/libretro-"$emuplat"/ -B /__w/libretro-super-ctrbuildz/libretro-super-ctrbuildz/libretro-"$emuplat"/"$sysplat" -DCMAKE_MAKE_PROGRAM=make -DCMAKE_TOOLCHAIN_FILE=/opt/devkitpro/cmake/"$sysplat".cmake
+       cd /__w/libretro-super-ctrbuildz/libretro-super-ctrbuildz/libretro-"$emuplat"/"$sysplat"
        make -j42069
-    - run:  7z a -mx=9 distctr.7z dist/*
+    - run:  7z a -mx=9 dist.7z dist/*
     - name: Upload core info bundle
       uses: svenstaro/upload-release-action@v2
       with:
-        file: distctr.7z
+        file: dist.7z
         tag: Latest
-        asset_name: distctr.7z
+        asset_name: dist.7z
         overwrite: true
