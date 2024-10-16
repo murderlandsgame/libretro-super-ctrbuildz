@@ -22,7 +22,7 @@ jobs:
     - name: citra
       run: |
        export emuplat=citra
-       export sysplat=ngc
+       export sysplat=wiiu
        
        ./libretro-fetch.sh --devkit --lutro --players --retroarch "$emuplat" 
        cd /opt/devkitpro/cmake
