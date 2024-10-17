@@ -19,10 +19,10 @@ jobs:
        #make -j42069 install
        #export CTRULIB="/opt/devkitpro/libctru"
        #cd ../../
-    - name: citra
+    - name: dolphin wiiu
       run: |
-       export emuplat=citra
-       export sysplat=wiiu
+       export emuplat=dolphin
+       export sysplat=WiiU
        
        ./libretro-fetch.sh --devkit --lutro --players --retroarch "$emuplat" 
        cd /opt/devkitpro/cmake
