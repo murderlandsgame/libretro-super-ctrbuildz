@@ -1,0 +1,39 @@
+
+name: libretro Core Info Package
+
+on:
+  workflow_dispatch:
+
+jobs:
+  Assets:
+    name: NX attempt
+    runs-on: ubuntu-latest
+    container: devkitpro/devkitarm64:latest
+
+    steps:
+    - uses: actions/checkout@v2
+    - name: dependencies
+      run: |
+       #git clone --recursive https://github.com/devkitPro/libctru.git
+       #cd libctru/libctru
+       #make -j42069 install
+       #export CTRULIB="/opt/devkitpro/libctru"
+       #cd ../../
+    - name: dolphin nx
+      run: |
+       export emuplat=dolphin
+       export sysplat=Switch
+       
+       ./libretro-fetch.sh --devkit --lutro --players --retroarch "$emuplat" 
+       cd /opt/devkitpro/cmake
+       cmake -S /__w/libretro-super-ctrbuildz/libretro-super-ctrbuildz/libretro-"$emuplat"/ -B /__w/libretro-super-ctrbuildz/libretro-super-ctrbuildz/libretro-"$emuplat"/"$sysplat" -DCMAKE_MAKE_PROGRAM=make -DCMAKE_TOOLCHAIN_FILE=/opt/devkitpro/cmake/"$sysplat".cmake
+       cd /__w/libretro-super-ctrbuildz/libretro-super-ctrbuildz/libretro-"$emuplat"/"$sysplat"
+       make -j42069
+    - run:  7z a -mx=9 dist.7z dist/*
+    - name: Upload dolphin nx
+      uses: svenstaro/upload-release-action@v2
+      with:
+        file: dist.7z
+        tag: Latest
+        asset_name: dist.7z
+        overwrite: true
