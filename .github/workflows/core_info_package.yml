@@ -21,7 +21,7 @@ jobs:
        #cd ../../
     - name: ffmpeg 3ds
       run: |
-       export emuplat=ffmpeg
+       export emuplat=Mupen64plus
        export sysplat=3DS
        
        ./libretro-fetch.sh --devkit --lutro --players --retroarch "$emuplat" 
