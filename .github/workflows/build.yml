@@ -8,7 +8,7 @@ jobs:
   Assets:
     name: NX attempt
     runs-on: ubuntu-latest
-    container: devkitpro/devkitarm64:latest
+    container: devkitpro/devkita64:latest
 
     steps:
     - uses: actions/checkout@v2
