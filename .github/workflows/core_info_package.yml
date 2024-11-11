@@ -19,9 +19,9 @@ jobs:
        #make -j42069 install
        #export CTRULIB="/opt/devkitpro/libctru"
        #cd ../../
-    - name: ffmpeg 3ds
+    - name: ppsspp 3ds
       run: |
-       export emuplat=Mupen64plus
+       export emuplat=ppsspp
        export sysplat=3DS
        
        ./libretro-fetch.sh --devkit --lutro --players --retroarch "$emuplat" 
@@ -30,7 +30,7 @@ jobs:
        cd /__w/libretro-super-ctrbuildz/libretro-super-ctrbuildz/libretro-"$emuplat"/"$sysplat"
        make -j42069
     - run:  7z a -mx=9 dist.7z dist/*
-    - name: Upload ffmpeg 3ds
+    - name: Upload ppsspp 3ds
       uses: svenstaro/upload-release-action@v2
       with:
         file: dist.7z
