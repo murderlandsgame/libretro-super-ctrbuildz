@@ -6,9 +6,9 @@ on:
 
 jobs:
   Assets:
-    name: Bundle Core Info Files
+    name: 3DS attempt
     runs-on: ubuntu-latest
-    container: devkitpro/devkitppc:latest
+    container: devkitpro/devkitarm:latest
 
     steps:
     - uses: actions/checkout@v2
@@ -19,10 +19,10 @@ jobs:
        #make -j42069 install
        #export CTRULIB="/opt/devkitpro/libctru"
        #cd ../../
-    - name: dolphin wiiu
+    - name: ffmpeg 3ds
       run: |
-       export emuplat=dolphin
-       export sysplat=WiiU
+       export emuplat=ffmpeg
+       export sysplat=3DS
        
        ./libretro-fetch.sh --devkit --lutro --players --retroarch "$emuplat" 
        cd /opt/devkitpro/cmake
@@ -30,7 +30,7 @@ jobs:
        cd /__w/libretro-super-ctrbuildz/libretro-super-ctrbuildz/libretro-"$emuplat"/"$sysplat"
        make -j42069
     - run:  7z a -mx=9 dist.7z dist/*
-    - name: Upload core info bundle
+    - name: Upload ffmpeg 3ds
       uses: svenstaro/upload-release-action@v2
       with:
         file: dist.7z
